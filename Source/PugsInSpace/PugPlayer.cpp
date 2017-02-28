@@ -63,6 +63,9 @@ void APugPlayer::MoveSides(float Value)
 		const FVector Direction = FRotationMatrix(Rotation).GetScaledAxis(EAxis::Y);
 		AddMovementInput(Direction, Value);
 	}
+<<<<<<< HEAD
+} 
+=======
 }
 
 void APugPlayer::StartJump()
@@ -74,3 +77,4 @@ void APugPlayer::StopJump()
 {
 	bPressedJump = false;
 }
+>>>>>>> refs/remotes/origin/master

@@ -35,4 +35,10 @@ public:
 		void StartJump();
 	UFUNCTION()
 		void StopJump();
+
+		void MoveSides(float Val);	
+
+	UFUNCTION()
+		void Jump(bool isJumping);
+
 };
