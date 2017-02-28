@@ -34,14 +34,5 @@ public:
 	UFUNCTION()
 		void StartJump();
 	UFUNCTION()
-		void StopJump();
-<<<<<<< HEAD
-=======
-
-		void MoveSides(float Val);	
-
-	UFUNCTION()
-		void Jump(bool isJumping);
-
->>>>>>> origin/PlayerSetup
+		void StopJump();	
 };
