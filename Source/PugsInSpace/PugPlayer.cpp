@@ -37,6 +37,7 @@ void APugPlayer::SetupPlayerInputComponent(UInputComponent* InputComponent)
 	InputComponent->BindAction("Jump", IE_Pressed, this, &APugPlayer::StartJump);
 	InputComponent->BindAction("Jump", IE_Released, this, &APugPlayer::StopJump);
 
+
 }
 
 void APugPlayer::MoveForward(float Value)

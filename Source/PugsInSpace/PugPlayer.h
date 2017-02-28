@@ -35,4 +35,11 @@ public:
 		void StartJump();
 	UFUNCTION()
 		void StopJump();	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD")
+		float MaxHealth = 1.0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD")
+		float CurrentHealth = MaxHealth;
+
 };
