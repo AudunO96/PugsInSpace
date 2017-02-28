@@ -22,6 +22,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
+	FVector CurrentVelocity;
+
+	UPROPERTY(EditAnywhere)
+		float PatrolTurnWest = 450.0;
+
+	UPROPERTY(EditAnywhere)
+		float PatrolTurnEast = 1250.0;
+
 	
 }; 

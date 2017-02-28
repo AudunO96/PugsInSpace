@@ -24,5 +24,19 @@ void ACatEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (CurrentVelocity.Y == 0)
+		CurrentVelocity.Y = 200.0f;
+
+	FVector NewLocation = GetActorLocation() + (CurrentVelocity * DeltaTime);
+
+		if (NewLocation.Y <= PatrolTurnEast)
+			CurrentVelocity.Y = CurrentVelocity.Y * -1;
+
+		if (NewLocation.Y >= PatrolTurnWest)
+			CurrentVelocity.Y = CurrentVelocity.Y * -1;
+
+		SetActorLocation(NewLocation);
+	
+
 } 
 
