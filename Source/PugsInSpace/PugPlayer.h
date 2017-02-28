@@ -30,4 +30,6 @@ public:
 		void MoveForward(float Val);
 	UFUNCTION()
 		void MoveSides(float Val);	
+	UFUNCTION()
+		void Jump(bool isJumping);
 };
