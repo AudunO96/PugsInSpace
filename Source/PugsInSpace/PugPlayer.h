@@ -29,7 +29,10 @@ public:
 	UFUNCTION()
 		void MoveForward(float Val);
 	UFUNCTION()
-		void MoveSides(float Val);	
+		void MoveSides(float Val);
+
 	UFUNCTION()
-		void Jump(bool isJumping);
+		void StartJump();
+	UFUNCTION()
+		void StopJump();
 };
