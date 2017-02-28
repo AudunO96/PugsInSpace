@@ -61,3 +61,8 @@ void APugPlayer::MoveSides(float Value)
 		AddMovementInput(Direction, Value);
 	}
 }
+
+void APugPlayer::Jump(bool isJumping)
+{
+
+}
