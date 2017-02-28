@@ -34,6 +34,9 @@ void APugPlayer::SetupPlayerInputComponent(UInputComponent* InputComponent)
 	InputComponent->BindAxis("MoveForward", this, &APugPlayer::MoveForward);
 	InputComponent->BindAxis("MoveSides", this, &APugPlayer::MoveSides);
 
+	InputComponent->BindAction("Jump", IE_Pressed, this, &APugPlayer::StartJump);
+	InputComponent->BindAction("Jump", IE_Released, this, &APugPlayer::StopJump);
+
 }
 
 void APugPlayer::MoveForward(float Value)
@@ -65,8 +68,13 @@ void APugPlayer::MoveSides(float Value)
 =======
 }
 
-void APugPlayer::Jump(bool isJumping)
+void APugPlayer::StartJump()
 {
+	bPressedJump = true;
+}
 
+void APugPlayer::StopJump()
+{
+	bPressedJump = false;
 }
 >>>>>>> refs/remotes/origin/master
