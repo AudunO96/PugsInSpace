@@ -17,6 +17,8 @@ void ACatEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	
+
 }
 
 // Called every frame
