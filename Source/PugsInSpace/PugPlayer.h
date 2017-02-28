@@ -29,11 +29,16 @@ public:
 	UFUNCTION()
 		void MoveForward(float Val);
 	UFUNCTION()
+		void MoveSides(float Val);
+
+	UFUNCTION()
+		void StartJump();
+	UFUNCTION()
+		void StopJump();
+
 		void MoveSides(float Val);	
-<<<<<<< HEAD
-	 
-=======
+
 	UFUNCTION()
 		void Jump(bool isJumping);
->>>>>>> refs/remotes/origin/master
+
 };
