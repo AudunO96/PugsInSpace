@@ -16,6 +16,8 @@ APugPlayer::APugPlayer()
 void APugPlayer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	CurrentHealth = MaxHealth;
 	
 }
 
@@ -23,6 +25,8 @@ void APugPlayer::BeginPlay()
 void APugPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	//GEngine->AddOnScreenDebugMessage(3, 0.f, FColor::Green, FString::Printf(TEXT("HP: %f"), CurrentHealth));
+	//UE_LOG(LogTemp, Warning, TEXT("%f"), CurrentHealth);
 
 }
 
@@ -44,10 +48,10 @@ void APugPlayer::MoveForward(float Value)
 {
 	if ((Controller != NULL) && (Value != 0.0f))
 	{
-		// find out which way is forward
+		// finner ut hvilken vei som er frem
 		FRotator Rotation = Controller->GetControlRotation();
 		
-		// add movement in that direction
+		// legger til bevegelse i retningen
 		const FVector Direction = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
 		AddMovementInput(Direction, Value);
 	}
@@ -60,7 +64,7 @@ void APugPlayer::MoveSides(float Value)
 		// finner retningen karakteren står i
 		FRotator Rotation = Controller->GetControlRotation();
 
-		// add movement in that direction
+		// legger til bevegelse i retningen
 		const FVector Direction = FRotationMatrix(Rotation).GetScaledAxis(EAxis::Y);
 		AddMovementInput(Direction, Value);
 	}
@@ -74,4 +78,22 @@ void APugPlayer::StartJump()
 void APugPlayer::StopJump()
 {
 	bPressedJump = false;
+}
+
+//standard-funksjon tatt fra dokumentasjon, tar inn parametre for mengde skade, kilden til skade og hvilken type skade det er
+float APugPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser)
+{
+	float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	CurrentHealth = CurrentHealth - ActualDamage;
+
+	if (CurrentHealth <= 0)
+		OnDeath();
+
+	return ActualDamage;
+}
+
+//Her skal det implementeres andre ting, som for eksempel OnDeath-meny, lasting etc.
+void APugPlayer::OnDeath()
+{
+	Destroy();
 }
