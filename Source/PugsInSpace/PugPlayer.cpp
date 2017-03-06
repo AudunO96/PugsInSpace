@@ -80,13 +80,13 @@ void APugPlayer::StopJump()
 	bPressedJump = false;
 }
 
-//standard-funksjon tatt fra dokumentasjon, tar inn parametre for mengde skade, kilden til skade og hvilken type skade det er
+// standard-funksjon tatt fra dokumentasjon, tar inn parametre for mengde skade, kilden til skade og hvilken type skade det er
 float APugPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser)
 {
 	float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	CurrentHealth = CurrentHealth - ActualDamage;
 
-	if (CurrentHealth <= 0)
+	if (CurrentHealth <= 0.000001)
 		OnDeath();
 
 	return ActualDamage;
@@ -95,5 +95,5 @@ float APugPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & Dam
 //Her skal det implementeres andre ting, som for eksempel OnDeath-meny, lasting etc.
 void APugPlayer::OnDeath()
 {
-	Destroy();
+	UWorld* TheWorld = GetWorld();
 }
