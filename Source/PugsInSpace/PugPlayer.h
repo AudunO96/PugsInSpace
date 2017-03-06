@@ -25,6 +25,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser) override;
+
 	//frem og tilbake (w, s)
 	UFUNCTION()
 		void MoveForward(float Val);
@@ -38,6 +40,10 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD")
 		float MaxHealth = 1.0;
+
+	float HealthPoints;
+
+	void OnDeath();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD")
 		float CurrentHealth = MaxHealth;
