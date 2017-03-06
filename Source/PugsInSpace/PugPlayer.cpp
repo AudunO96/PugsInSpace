@@ -86,7 +86,7 @@ float APugPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & Dam
 	float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	CurrentHealth = CurrentHealth - ActualDamage;
 
-	if (CurrentHealth <= 0)
+	if (CurrentHealth <= 0.000001)
 		OnDeath();
 
 	return ActualDamage;
@@ -95,5 +95,6 @@ float APugPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & Dam
 //Her skal det implementeres andre ting, som for eksempel OnDeath-meny, lasting etc.
 void APugPlayer::OnDeath()
 {
-	Destroy();
+	UWorld* TheWorld = GetWorld();
+	UGameplayStatics::OpenLevel(GetWorld(), "Main");
 }
