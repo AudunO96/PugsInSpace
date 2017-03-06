@@ -96,4 +96,5 @@ float APugPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & Dam
 void APugPlayer::OnDeath()
 {
 	UWorld* TheWorld = GetWorld();
+	UGameplayStatics::OpenLevel(GetWorld(), "Main"); // endre Main for aa bytte til death-screen senere
 }
