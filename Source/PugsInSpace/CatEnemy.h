@@ -30,5 +30,9 @@ public:
 	UPROPERTY(EditAnywhere)
 		float PatrolTurnEast = 1250.0;
 
-	
+	UFUNCTION()
+		void OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherActor,
+			UPrimitiveComponent *OtherComponent, int32 OtherBodyIndex,
+			bool bFromSweep, const FHitResult &SweepResult);
+
 }; 
