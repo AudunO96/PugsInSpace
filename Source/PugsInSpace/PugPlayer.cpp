@@ -4,6 +4,7 @@
 #include "PugPlayer.h"
 
 
+
 // Sets default values
 APugPlayer::APugPlayer()
 {
@@ -95,6 +96,5 @@ float APugPlayer::TakeDamage(float DamageAmount, struct FDamageEvent const & Dam
 //Her skal det implementeres andre ting, som for eksempel OnDeath-meny, lasting etc.
 void APugPlayer::OnDeath()
 {
-	UWorld* TheWorld = GetWorld();
-	UGameplayStatics::OpenLevel(GetWorld(), "Main"); // endre Main for aa bytte til death-screen senere
+	UGameplayStatics::OpenLevel(GetWorld(), "Main"); // endre Main for aa bytte til death-screen senere eller starte en level på nytt
 }
