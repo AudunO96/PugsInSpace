@@ -51,9 +51,8 @@ void ACatEnemy::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *Othe
 
 		TSubclassOf<UDamageType> const ValidDamageTypeClass = TSubclassOf<UDamageType>(UDamageType::StaticClass());
 		FDamageEvent DamageEvent(ValidDamageTypeClass);
-		ApplyDamage
+
 		const float DamageAmount = .2f;
 		thePlayer->TakeDamage(DamageAmount, DamageEvent, PlayerController, this);
-		
 	}	
 }
