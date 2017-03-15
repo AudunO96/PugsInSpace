@@ -2,6 +2,7 @@
 
 #include "PugsInSpace.h"
 #include "CatEnemy.h"
+#include "PugPlayer.h"
 
 
 // Sets default values
@@ -38,7 +39,20 @@ void ACatEnemy::Tick(float DeltaTime)
 			CurrentVelocity.Y = CurrentVelocity.Y * -1;
 
 		SetActorLocation(NewLocation);
-	
-
 } 
 
+void ACatEnemy::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
+{
+	//GetWorld()->GetFirstPlayerController();
+	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+	if (OtherActor->IsA(APugPlayer::StaticClass()))
+	{
+		APugPlayer* thePlayer = Cast <APugPlayer> (OtherActor);
+
+		TSubclassOf<UDamageType> const ValidDamageTypeClass = TSubclassOf<UDamageType>(UDamageType::StaticClass());
+		FDamageEvent DamageEvent(ValidDamageTypeClass);
+
+		const float DamageAmount = .2f;
+		thePlayer->TakeDamage(DamageAmount, DamageEvent, PlayerController, this);
+	}	
+}
