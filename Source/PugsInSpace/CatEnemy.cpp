@@ -43,8 +43,7 @@ void ACatEnemy::Tick(float DeltaTime)
 
 void ACatEnemy::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
 {
-	//GetWorld()->GetFirstPlayerController();
-	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+	APlayerController *AAIController = GetWorld()->GetPlayerControllerIterator;
 	if (OtherActor->IsA(APugPlayer::StaticClass()))
 	{
 		APugPlayer* thePlayer = Cast <APugPlayer> (OtherActor);
@@ -53,6 +52,6 @@ void ACatEnemy::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *Othe
 		FDamageEvent DamageEvent(ValidDamageTypeClass);
 
 		const float DamageAmount = .2f;
-		thePlayer->TakeDamage(DamageAmount, DamageEvent, PlayerController, this);
-	}	
+		thePlayer->TakeDamage(DamageAmount, DamageEvent, AAIController, this);
+	}
 }
